@@ -1,0 +1,10 @@
+{
+    "development": {
+      "libmbedtls": "development",
+      "mbedtls": "mbedtls-2.6"
+     },
+    "master": {
+      "libmbedtls": "master",
+      "mbedtls": "mbedtls-2.6"
+     }
+}

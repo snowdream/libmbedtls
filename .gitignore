@@ -92,3 +92,5 @@ target/
 
 ### Java ###
 *.class
+
+app/src/main/cpp/mbedtls/
