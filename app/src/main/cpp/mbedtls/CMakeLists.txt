@@ -2,18 +2,9 @@ cmake_minimum_required(VERSION 3.4.1)
 project("mbed TLS" C)
 
 option(USE_PKCS11_HELPER_LIBRARY "Build mbed TLS with the pkcs11-helper library." OFF)
-option(ENABLE_ZLIB_SUPPORT "Build mbed TLS with zlib library." OFF)
-
-option(ENABLE_PROGRAMS "Build mbed TLS programs." ON)
+option(ENABLE_ZLIB_SUPPORT "Build mbed TLS with zlib library." ON)
 
 option(UNSAFE_BUILD "Allow unsafe builds. These builds ARE NOT SECURE." OFF)
-
-# the test suites currently have compile errors with MSVC
-if(MSVC)
-    option(ENABLE_TESTING "Build mbed TLS tests." OFF)
-else()
-    option(ENABLE_TESTING "Build mbed TLS tests." ON)
-endif()
 
 # Warning string - created as a list for compatibility with CMake 2.8
 set(WARNING_BORDER "*******************************************************\n")

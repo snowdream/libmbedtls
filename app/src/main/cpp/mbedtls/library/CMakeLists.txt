@@ -1,6 +1,6 @@
-option(USE_STATIC_MBEDTLS_LIBRARY "Build mbed TLS static library." OFF)
+option(USE_STATIC_MBEDTLS_LIBRARY "Build mbed TLS static library." ON)
 option(USE_SHARED_MBEDTLS_LIBRARY "Build mbed TLS shared library." ON)
-option(LINK_WITH_PTHREAD "Explicitly link mbed TLS library to pthread." OFF)
+option(LINK_WITH_PTHREAD "Explicitly link mbed TLS library to pthread." ON)
 
 set(src_crypto
     aes.c
@@ -102,9 +102,13 @@ if(ENABLE_ZLIB_SUPPORT)
     set(libs ${libs} ${ZLIB_LIBRARIES})
 endif(ENABLE_ZLIB_SUPPORT)
 
-if(LINK_WITH_PTHREAD)
-    set(libs ${libs} pthread)
-endif()
+# For all API levels, the build system automatically links the standard C libraries,
+# the standard C++ libraries, real-time extensions, and pthread;
+# you do not need to include them when defining your LOCAL_LDLIBS variable.
+#
+# if(LINK_WITH_PTHREAD)
+#   set(libs ${libs} pthread)
+# endif()
 
 if (NOT USE_STATIC_MBEDTLS_LIBRARY AND NOT USE_SHARED_MBEDTLS_LIBRARY)
     message(FATAL_ERROR "Need to choose static or shared mbedtls build!")
